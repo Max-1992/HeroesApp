@@ -1,0 +1,59 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="assets/images/img-01.png" alt="IMG">
+            </div>
+
+            <form #forma="ngForm" (submit)="registrarse(forma)" class="login100-form validate-form" novalidate>
+                <span class="login100-form-title">
+                    Registrate
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <div *ngIf="email.touched && email.errors?.required" class="validations-email">
+                        <span>Este camopo es obligatorio...</span>
+                    </div>
+                    <div *ngIf="email.touched && email.errors?.pattern" class="validations-email">
+                        <span>Este correo no es valido</span>
+                    </div>
+
+                    <input #email="ngModel" class="input100" type="text" name="email" placeholder="Email" [(ngModel)]="usuario.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope envelope" aria-hidden="true"></i>
+                    </span>
+
+
+
+
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <div *ngIf="password.touched && password.errors?.required" class="validations-email">
+                        <span>Este camopo es obligatorio...</span>
+                    </div>
+                    <div *ngIf="password.touched && password.errors?.minlength" class="validations-email">
+                        <span>Este camopo requiere un minimo de {{ password.errors?.minlength.requiredLength }} caracteres...</span>
+                    </div>
+                    <input #password="ngModel" class="input100" type="password" name="pass" placeholder="Password" [(ngModel)]="usuario.password" required minlength="6">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="custom-control custom-checkbox ml-5 mb-3">
+                    <input [(ngModel)]="recordar" name="recordar" type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Recordar mi usuario</label>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Registrarse
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<h1>Héroe <small>Nombre del héroe</small></h1>
+
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button routerLink="/heroes" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Regresar
+        </button>
+    </div>
+</div>
+
+<div class="row animated fadeIn faster">
+    <div class="col">
+
+        <form #forma="ngForm" (submit)="Guardar( forma )" novalidate>
+            <div class="form-group">
+                <label for="id">Firebase ID</label>
+                <input [(ngModel)]="heroe.id" type="text" name="id" class="form-control" placeholder="Firebase ID" disabled="disabled" required>
+                <i class="form-text text-muted"><small >Este campo es autogenerado</small></i>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input [(ngModel)]="heroe.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre del Héroe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="poder">Poder</label>
+                <input [(ngModel)]="heroe.poder" type="text" name="poder" class="form-control" placeholder="Poder del Héroe" required>
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <br>
+                <button *ngIf="heroe.estado" (click)="heroe.estado = false" class="btn btn-outline-success w-50" type="button">
+                        <i class="fas fa-thumbs-up "></i> Vivo
+                </button>
+
+                <button *ngIf="!heroe.estado" (click)="heroe.estado = true" class="btn btn-outline-danger w-50" type="button">
+                        <i class="fas fa-thumbs-down"></i> Muerto
+                </button>
+
+            </div>
+
+            <hr>
+
+            <div class="form-group text-center">
+                <button class="btn btn-primary w-25" type="submit">
+                    <i  class="fas fa-share-square"></i> Guardar
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
